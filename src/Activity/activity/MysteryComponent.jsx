@@ -9,7 +9,7 @@ const MysteryComponent = ({
       <div className="text-center">
         <span className="text-basic is-size-4">tu peux utiliser :
           <a 
-            href="https://www.notion.so/Engineering-Wiki-0aa3321131694c069cbfc5f6859ed8d7" 
+            href="https://far-profit-8d3.notion.site/Engineering-Wiki-0aa3321131694c069cbfc5f6859ed8d7"
             target="_blank" 
             rel="noopener noreferrer"
             className="text-basic is-size-4"
