@@ -96,7 +96,7 @@ const Carousel = ({
                     download={download}
                     multiSelect={multiSelect}
                     onDownload={() => onDownload(item.id)}
-                    /** drang and drop carousel */
+                    /** drag and drop carousel */
                     targetKeys={targetKeys}
                     targetDropped={item.targetDropped}
                     onDrop={onDrop}

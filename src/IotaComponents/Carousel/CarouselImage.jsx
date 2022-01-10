@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Carousel from './Carousel';
 import SelectableImage from './SelectableImage';
 import ImageItem from './ImageItem';
-import { onDownload } from 'IotaComponents/Activities/Carousel/check-images';
+import { onDownload } from './check-images';
 
 
 const CarouselImage = ({

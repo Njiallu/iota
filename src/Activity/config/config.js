@@ -37,7 +37,7 @@ const level = {
     steps: [
       {
         instruction:
-          "Tu dois associer les titres au oeuvres d'art correspondantes",
+          "Tu dois associer les titres aux oeuvres d'art correspondantes",
         stop: true,
         content: [
           {
@@ -47,7 +47,6 @@ const level = {
               itemArray: ImageArray,
               stepperDots: false,
               shuffle: true,
-              itemArray: ImageArray,
               check: checkItemIsSolo,
             },
             actions: ['SAVE_PROGRESS', 'NEXT_STEP'],
@@ -56,7 +55,7 @@ const level = {
       },
       {
         instruction:
-          "Avec l'aide d'internet, tu dois associer les auteurs au oeuvres d'art correspondantes",
+          "Avec l'aide d'internet, tu dois associer les auteurs aux oeuvres d'art correspondantes",
         stop: true,
         content: [
           {
