@@ -271,7 +271,7 @@
   border: 2px solid var(--iota-grey-blue-color);
 }
 .carousel-image-frame {
-  max-height: 350px;
+  /* max-height: 350px; */
   /* overflow: hidden; */
   margin: auto 15px;
   border-radius: 15px;

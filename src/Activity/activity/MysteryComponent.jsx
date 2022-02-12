@@ -1,37 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import Carousel from "../../IotaComponents/Carousel/CarouselDragAndDrop";
+
+const Item = ({}) => {
+  return <div>Tut</div>;
+};
 
 const MysteryComponent = ({
+  ckey,
+  savedData,
+  setDataToUse,
+  content,
+  targetKey,
+  actions,
 }) => {
-
-  return (
-    <div style={{ height: '100%' }}>
-      <div className="text-center">
-        <span className="text-basic is-size-4">tu peux utiliser :
-          <a 
-            href="https://projet-iota.notion.site/Engineering-Wiki-Work-in-progress-0aa3321131694c069cbfc5f6859ed8d7"
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-basic is-size-4"
-          >La DOC</a>
-        </span>
-      </div>
-    </div>
-  );
+  return <Carousel ckey={ckey} content={content} setDataToUse={setDataToUse} />;
 };
 
 MysteryComponent.propTypes = {
-  arrayOfInput: PropTypes.array,
-  setArrayOfInput: PropTypes.func,
-  imagesArray: PropTypes.array,
+  savedData: PropTypes.array,
+  setDataToUse: PropTypes.func,
   targetKey: PropTypes.string,
+  content: PropTypes.shape({}),
   actions: PropTypes.shape({}),
 };
 MysteryComponent.defaultProps = {
-  arrayOfInput: [],
-  setArrayOfInput: () => { },
+  savedData: [],
+  setDataToUse: () => {},
   imagesArray: [],
-  targetKey: '',
+  targetKey: "",
   actions: [],
 };
 
