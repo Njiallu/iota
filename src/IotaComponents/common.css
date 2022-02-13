@@ -158,3 +158,8 @@
 		justify-content: flex-start;
 	}
 }
+
+/* Fix font for some reason */
+.fa, .fas, .far {
+	font-family: "Font Awesome 5 Free";
+}

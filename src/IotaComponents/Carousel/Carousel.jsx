@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { PropTypes } from 'prop-types';
-import useWindowSize from '../../Hooks/useWindowSize';
-import ButtonArrow from '../Atoms/Buttons/ButtonArrow';
-import StepperDots from '../Atoms/StepperDots';
-import { onDownload } from './check-images';
+import React, { useState, useEffect } from "react";
+import { PropTypes } from "prop-types";
+import useWindowSize from "../../Hooks/useWindowSize";
+import ButtonArrow from "../Atoms/Buttons/ButtonArrow";
+import StepperDots from "../Atoms/StepperDots";
+// import { onDownload } from "./check-images";
 
 const Carousel = ({
   itemNb,
@@ -14,7 +14,6 @@ const Carousel = ({
   download,
   stepperDots,
   targetKeys,
-  onDownload,
   onSelect,
   onDrop,
   onChange,
@@ -26,11 +25,11 @@ const Carousel = ({
 
   useEffect(() => {
     if (displayOnlySelected) {
-      setCarouselItem(itemArray.filter(item => item.isSet));
+      setCarouselItem(itemArray.filter((item) => item.isSet));
     } else {
       setCarouselItem(itemArray);
     }
-  }, [itemArray]);
+  }, [itemArray, displayOnlySelected]);
 
   useEffect(() => {
     if (size.width <= 1000) {
@@ -40,7 +39,7 @@ const Carousel = ({
     } else {
       setCarouselNb(itemNb);
     }
-  }, [size.width]);
+  }, [size.width, itemNb]);
 
   const handlePrevStep = () => {
     if (carouselStep > 0) setCarouselStep(carouselStep - 1);
@@ -54,13 +53,13 @@ const Carousel = ({
   return (
     <div
       className="col-flex-centered"
-      style={{ width: '100%', height: '100%' }}
+      style={{ width: "100%", height: "100%" }}
     >
       <div className="row-flex-centered">
         <div
           id="carousel-arrows"
           className="row-flex-centered"
-          style={{ flex: '0 0 50px' }}
+          style={{ flex: "0 0 50px" }}
         >
           {carouselStep > 0 ? (
             <ButtonArrow sens="left" onValidate={() => handlePrevStep()} />
@@ -70,17 +69,14 @@ const Carousel = ({
         {carouselItem.map((item, index) => {
           if (index >= carouselStep && index < carouselStep + carouselNb) {
             return (
-              < div
-                key={`item_${index}_${item.id}`}
-                className="col-flex-start"
-              >
+              <div key={`item_${index}_${item.id}`} className="col-flex-start">
                 {/* carousel item */}
                 <div
                   key={item.id}
                   className={
                     item.isSet
-                      ? 'carousel-image-selected flat-shadow carousel-image-frame'
-                      : ' carousel-image-frame'
+                      ? "carousel-image-selected flat-shadow carousel-image-frame"
+                      : " carousel-image-frame"
                   }
                 >
                   <ComponentToDisplay
@@ -95,7 +91,7 @@ const Carousel = ({
                     inputs={item.inputs}
                     download={download}
                     multiSelect={multiSelect}
-                    onDownload={() => onDownload(item.id)}
+                    // onDownload={() => onDownload(item.id)}
                     /** drag and drop carousel */
                     targetKeys={targetKeys}
                     targetDropped={item.targetDropped}
@@ -103,10 +99,9 @@ const Carousel = ({
                     /** image carousel */
                     onSelect={() => onSelect(item.id)}
                     /** input carousel */
-                    onChange={(value) => onChange({ ...value, item: item.id, })}
+                    onChange={(value) => onChange({ ...value, item: item.id })}
                   />
                 </div>
-
               </div>
             );
           }
@@ -115,7 +110,7 @@ const Carousel = ({
         <div
           id="carousel-arrows"
           className="row-flex-centered"
-          style={{ flex: '0 0 50px' }}
+          style={{ flex: "0 0 50px" }}
         >
           {carouselStep + carouselNb < carouselItem.length ? (
             <ButtonArrow sens="right" onValidate={() => handleNextStep()} />
@@ -128,7 +123,9 @@ const Carousel = ({
           <StepperDots
             step={carouselStep % 6}
             totalSteps={
-              carouselItem.length < 6 ? carouselItem.length - (carouselNb - 1) : 6
+              carouselItem.length < 6
+                ? carouselItem.length - (carouselNb - 1)
+                : 6
             }
           />
         </div>
@@ -156,18 +153,21 @@ Carousel.propTypes = {
     PropTypes.shape({
       key: PropTypes.string,
       placeHolder: PropTypes.string,
-    })),
+    })
+  ),
 };
 
 Carousel.defaultProps = {
-  returnData: () => console.error('Try to select'),
+  returnData: () => console.error("Try to select"),
   itemNb: 3,
   itemArray: [],
   multiSelect: false,
   download: false,
   stepperDots: true,
-  onDrop: () => { console.log("try to drop"); },
-  targetKeys: []
+  onDrop: () => {
+    console.log("try to drop");
+  },
+  targetKeys: [],
 };
 
 export default Carousel;

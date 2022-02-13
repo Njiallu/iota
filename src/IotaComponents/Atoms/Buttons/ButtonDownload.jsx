@@ -1,5 +1,5 @@
-import React from 'react';
-import { PropTypes } from 'prop-types';
+import React from "react";
+import { PropTypes } from "prop-types";
 
 const ButtonDownload = ({ onValidate, text, data, nameImage }) => {
   return (
@@ -7,6 +7,7 @@ const ButtonDownload = ({ onValidate, text, data, nameImage }) => {
       type="button"
       className="button-download"
       onClick={() => onValidate()}
+      style={{ width: "100%" }}
     >
       <a href={data} download={nameImage}>
         <span className="is-bold is-size-6">{text}</span>
@@ -23,10 +24,10 @@ ButtonDownload.propTypes = {
 };
 
 ButtonDownload.defaultProps = {
-  onValidate: () => console.error('Try to Download'),
-  text: 'Télécharger',
-  nameImage: 'iota-image',
-  data: '',
+  onValidate: () => console.error("Try to Download"),
+  text: "Télécharger",
+  nameImage: "iota-image",
+  data: "",
 };
 
 export default ButtonDownload;

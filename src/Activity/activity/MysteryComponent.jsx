@@ -2,34 +2,47 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Carousel from "../../IotaComponents/Carousel/CarouselDragAndDrop";
 
-const Item = ({}) => {
-  return <div>Tut</div>;
-};
-
 const MysteryComponent = ({
-  ckey,
-  savedData,
-  setDataToUse,
+  answers,
+  setAnswers,
   content,
   targetKey,
   actions,
 }) => {
-  return <Carousel ckey={ckey} content={content} setDataToUse={setDataToUse} />;
+  console.log("content", content);
+
+  // Do some logic to save answers returned to this component
+
+  return (
+    <Carousel
+      ckey={targetKey}
+      content={content}
+      savedData={answers}
+      setDataToUse={(e) => {
+        console.trace(e);
+        if (e?.setNext) {
+          setAnswers(e.answers);
+        }
+      }}
+    />
+  );
 };
 
 MysteryComponent.propTypes = {
-  savedData: PropTypes.array,
-  setDataToUse: PropTypes.func,
+  answers: PropTypes.array,
+  setAnswers: PropTypes.func,
   targetKey: PropTypes.string,
   content: PropTypes.shape({}),
   actions: PropTypes.shape({}),
 };
 MysteryComponent.defaultProps = {
   savedData: [],
-  setDataToUse: () => {},
-  imagesArray: [],
+  setAnswers: () => {
+    console.log("Not implemented");
+  },
   targetKey: "",
-  actions: [],
+  content: {},
+  actions: {},
 };
 
 export default MysteryComponent;

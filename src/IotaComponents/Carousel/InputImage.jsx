@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import ImageItem from './ImageItem';
-import InputTextWithBorders from '../Atoms/InputTextWithBorders';
+import React from "react";
+import PropTypes from "prop-types";
+import ImageItem from "./ImageItem";
+import InputTextWithBorders from "../Atoms/InputTextWithBorders";
+import ButtonDownload from "../Atoms/Buttons/ButtonDownload";
 
 const InputImage = ({
   ckey,
@@ -13,31 +14,48 @@ const InputImage = ({
   canDl,
   /** input */
   onChange,
-  inputs
+  inputs,
 }) => {
-
   return (
-    <div key={`InputImage_${ckey}`} className="col-flex-between"
-      style={{ height: '100%' }}
+    <div
+      key={`InputImage_${ckey}`}
+      className="col-flex-between"
+      style={{ height: "520px" }}
     >
       <ImageItem
+        ckey={`${ckey}_image`}
         source={source}
         alt={alt}
         selected={selected}
-        download={download}
+        // download={download}
         canDl={canDl}
       />
-      <div className="my-3">
-        {inputs?.map((input, index) => <InputTextWithBorders
-          key={`InputImagecall_${ckey}_${input.key}_${index}`}
-          ckey={`InputImage_${ckey}_${input.key}_${index}`}
-          value={input.value}
-          name={input.key}
-          placeholder={input.placeholder}
-          onChange={(value) => onChange(value)}
-        />
-        )}
+      <div
+        key={`DragAndDropItem_${ckey}`}
+        className="col-flex-end mt-4"
+        style={{ width: "100%" }}
+      >
+        {inputs?.map((input, index) => (
+          <InputTextWithBorders
+            key={`InputImagecall_${ckey}_${input.key}_${index}`}
+            ckey={`InputImage_${ckey}_${input.key}_${index}`}
+            value={input.value}
+            name={input.key}
+            placeholder={input.placeHolder}
+            onChange={(value) => onChange(value)}
+          />
+        ))}
       </div>
+      {download ? (
+        <div className="row-flex-centered" style={{ width: "100%" }}>
+          <ButtonDownload data={source} />
+        </div>
+      ) : (
+        <div
+          className="col-flex-centered"
+          style={{ width: "100%", height: "70px" }}
+        />
+      )}
     </div>
   );
 };
@@ -51,11 +69,14 @@ InputImage.propTypes = {
 };
 
 InputImage.defaultProps = {
-  ckey: 'InputImage',
-  source: '',
-  alt: '',
+  ckey: "InputImage",
+  source: "",
+  alt: "",
+  placeholder: "",
   selected: false,
-  onSelect: () => { console.log("Try to select") }
+  onSelect: () => {
+    console.log("Try to select");
+  },
 };
 
 export default InputImage;

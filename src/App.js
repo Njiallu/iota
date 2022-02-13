@@ -9,6 +9,7 @@ import './IotaComponents/layout.css';
 import './IotaComponents/iota-components.css';
 import './IotaComponents/common.css';
 import './IotaComponents/activity-views.css';
+import Musee from "./IotaComponents/assets/Background/illustration_museum.png";
 
 const App = () => {
 
@@ -19,6 +20,13 @@ const App = () => {
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
         crossOrigin="anonymous"
+      />
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossOrigin="anonymous"
+        referrerPolicy="no-referrer"
       />
       <NavBar
         profile={
@@ -36,9 +44,10 @@ const App = () => {
       <PageActivity>
           <div className="activity-level-header">
             <ActivityHeader
+              image={Musee}
               level={1}
-              title={"TEST"}
-                instruction={'Il faut que tu trouves comment complèter et assembler les composants pour suivre le modèle présent dans le dossier model_integration.'}
+              title={"Rififi au musée"}
+                instruction={'Retrouve le titre et l\'artiste des oeuvres d\'arts en utlisant la recherche inversée et mets-en une en fond d\'écran.'}
             />
           </div>
         <div

@@ -1,5 +1,5 @@
-import React from 'react';
-import { PropTypes } from 'prop-types';
+import React from "react";
+import { PropTypes } from "prop-types";
 
 const LevelStars = ({ total, selected }) => {
   const stars = [];
@@ -8,7 +8,7 @@ const LevelStars = ({ total, selected }) => {
       <i
         key={i}
         className={`fa fa-star ${
-          i <= selected ? 'star-checked' : 'star-not-checked'
+          i < selected ? "star-checked" : "star-not-checked"
         }`}
       />
     );

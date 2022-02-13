@@ -1,9 +1,9 @@
-import React from 'react';
-import { PropTypes } from 'prop-types';
-import Soki from '../assets/head.png';
+import React from "react";
+import { PropTypes } from "prop-types";
+import Soki from "../assets/head.png";
 
 const Avatar = ({ avatar, size }) => {
-  const proportions = ['35px', '65px', '110px', '150px', '400px'];
+  const proportions = ["35px", "65px", "110px", "150px", "400px"];
   return (
     <img
       src={avatar}
@@ -16,7 +16,7 @@ const Avatar = ({ avatar, size }) => {
 };
 
 Avatar.propTypes = {
-  avatar: PropTypes.shape({}),
+  avatar: PropTypes.string, // url
   size: PropTypes.number,
 };
 

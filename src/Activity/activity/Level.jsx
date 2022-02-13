@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import ButtonBottomLine from "../../IotaComponents/Molecules/ButtonBottomLine";
 
@@ -10,6 +10,7 @@ const Level = ({ level, data }) => {
     SAVE_PROGRESS: (progres) => {
       console.log("[LEVEL]", level);
       console.log("[SAVE PROGRESS DATA]", progres);
+      // We should send dataToUse to the backend but oh well
     },
     NEXT_STEP: () => {
       console.log("[NEXT STEP]", step);
@@ -29,21 +30,25 @@ const Level = ({ level, data }) => {
             {data.steps[step].instruction}
           </span>
         </div>
-        {data.steps[step].content.map((element, index) => (
-          <element.component
-            key={`contentcall_${index}`}
-            ckey={`content_${index}`}
-            content={element?.content}
-            savedData={
-              dataToUse?.progress?.answers ? dataToUse?.progress?.answers : null
-            }
-            setDataToUse={(rep) =>
-              setDataToUse({
-                progress: rep,
-              })
-            }
-          />
-        ))}
+        {data.steps[step].content.map((element, index) => {
+          console.log("dataToUse", dataToUse);
+          return (
+            <element.component
+              key={`contentcall_${index}`}
+              targetKey={`content_${index}`}
+              content={element?.content}
+              answers={
+                dataToUse?.progress?.answers
+                  ? dataToUse?.progress?.answers
+                  : null
+              }
+              setAnswers={(rep) => {
+                console.log("setAnswer", rep);
+                setDataToUse([...dataToUse, { level: step, answers: rep }]);
+              }}
+            />
+          );
+        })}
         <div className="row-flex-centered m-4">
           <div className="mx-2">
             <ButtonBottomLine
@@ -74,7 +79,7 @@ const Level = ({ level, data }) => {
                       )
                   : () => actions["NEXT_STEP"]()
               }
-              thisIsTheEnd={step === data.steps[step].length}
+              thisIsTheEnd={step === data.steps.length - 1}
             />
           </div>
         </div>
