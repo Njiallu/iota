@@ -41,15 +41,18 @@ const App = () => {
         }}
       >
         <div className="layout-main-content">
-      <PageActivity>
-          <div className="activity-level-header">
-            <ActivityHeader
-              image={Musee}
-              level={1}
-              title={"Rififi au musée"}
-                instruction={'Retrouve le titre et l\'artiste des oeuvres d\'arts en utlisant la recherche inversée et mets-en une en fond d\'écran.'}
-            />
-          </div>
+      <PageActivity className="position-relative">
+        <button className="activity-level-back-button">
+          <i className="m-0 mr-4 my-auto fa fa-angle-left" aria-hidden="true" />
+        </button>
+        <div className="activity-level-header">
+          <ActivityHeader
+            image={Musee}
+            level={1}
+            title={"Rififi au musée"}
+              instruction={'Retrouve le titre et l\'artiste des oeuvres d\'arts en utlisant la recherche inversée et mets-en une en fond d\'écran.'}
+          />
+        </div>
         <div
           className="activity-level-activity col-flex-centered background-cover"
           style={{

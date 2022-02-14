@@ -1,25 +1,22 @@
-import React from 'react';
-import { PropTypes } from 'prop-types';
-import '../activity-views.css';
-import LevelStars from '../Atoms/LevelStars';
-import saturne from '../assets/Background/illustration_starnav.png';
+import React from "react";
+import { PropTypes } from "prop-types";
+import "../activity-views.css";
+import LevelStars from "../Atoms/LevelStars";
+import saturne from "../assets/Background/illustration_starnav.png";
+import ButtonPrec from "../Atoms/Buttons/ButtonPrec";
 
 /**
  * Component Statique Activity Header
  * Configurable a partir du fichier header-config.js
  */
-const ActivityHeader = ({
-  level,
-  title,
-  instruction,
-  image,
-}) => {
+const ActivityHeader = ({ level, title, instruction, image }) => {
   return (
+    <>
       <div className="level-header">
         <div className="level-header-top">
           <div className="mx-auto my-2">
             <img
-              style={{ width: '90px', height: '85px' }}
+              style={{ width: "90px", height: "85px" }}
               src={image}
               alt="Illustration de l'activité"
             />
@@ -33,6 +30,7 @@ const ActivityHeader = ({
         </span>
         <p className="text-center text-basic is-size-6">{instruction}</p>
       </div>
+    </>
   );
 };
 
@@ -47,7 +45,7 @@ ActivityHeader.propTypes = {
 
 ActivityHeader.defaultProps = {
   level: 1,
-  title: 'Exemple de titre',
+  title: "Exemple de titre",
   instruction: "Exemple d'instruction",
   image: saturne,
   correction: false,
